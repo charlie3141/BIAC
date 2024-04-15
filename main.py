@@ -2,9 +2,9 @@ from flask import Flask, request, render_template, jsonify, redirect
 from config import app,db
 from models import Users
 
-@app.route("/hello")
+@app.route("/")
 def hello():
-    return render_template("home.html")
+    return render_template("index.html")
 
 @app.route("/dangnhap", methods=["GET","POST"])
 def login(): 
@@ -20,22 +20,22 @@ def login():
 
 @app.route("/dangky", methods = ["POST","GET"])
 def dang_ky():
-    User = Users.query.all()
+    '''User = Users.query.all()
     json_User = list(map(lambda x : x.to_json(),User))
-    data = jsonify({"user": json_User})
-    print(data)
+    data = jsonify({"user": json_User})'''
     if request.method == "POST" : 
+        name = request.form["username"]
         email = request.form["email"]
-        pwd = request.form["pwd"]
+        pwd = request.form["password"]
         if not email or not pwd : 
             return jsonify({"message": "information can't be null"}),400
-        newUser = Users(email = email, pwd = pwd)
+        newUser = Users(name = name, email = email, pwd = pwd)
         try : 
             db.session.add(newUser)
             db.session.commit()
         except Exception as e :
             return jsonify({"message": str(e)}),400
-    return render_template("index.html")
+    return render_template("signup.html")
 
 @app.route("/test")
 def test():
