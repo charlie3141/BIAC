@@ -2,7 +2,7 @@ body{
   width: 100%;
   height: 100vh;
   margin-top: 2.5vw;
-  background-image: url(../access/img/Success.png);
+  background-image: url(../static/images/img/Success.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;

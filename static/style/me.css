@@ -2,7 +2,7 @@ body{
   width: 100%;
   height: 100vh;
   margin-top: 50;
-  background-image: url(../access/img/WEBLOGIN.png);
+  background-image: url(../static/images/img/WEBLOGIN.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
